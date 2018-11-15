@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Window1.xaml](./CS/TextEdit_EditNonEditableTemplate/Window1.xaml) (VB: [Window1.xaml.vb](./VB/TextEdit_EditNonEditableTemplate/Window1.xaml.vb))
+* [Window1.xaml.cs](./CS/TextEdit_EditNonEditableTemplate/Window1.xaml.cs) (VB: [Window1.xaml.vb](./VB/TextEdit_EditNonEditableTemplate/Window1.xaml.vb))
+<!-- default file list end -->
 # How to customize the appearance of the in-place combo box editor
 
 
