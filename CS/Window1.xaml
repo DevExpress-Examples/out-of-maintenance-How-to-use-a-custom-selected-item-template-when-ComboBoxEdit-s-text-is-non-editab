@@ -4,51 +4,49 @@
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:TextEdit_EditNonEditableTemplate"
         Title="Access Cards"
-        Width="300"
+        Width="400"
         Height="200">
-
-    <dxg:GridControl Name="gridControl1">
-        <dxg:GridControl.Columns>
-            <dxg:GridColumn FieldName="Name" />
-            <dxg:GridColumn FieldName="CardColor" Header="Access Card Color">
-                <dxg:GridColumn.EditSettings>
-                    <dxe:ComboBoxEditSettings IsTextEditable="False">
-                        <dxe:ComboBoxEditSettings.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="Transparent">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Rectangle Width="10"
-                                                   Height="10"
-                                                   Margin="6,0,6,0"
-                                                   Fill="{Binding TargetNullValue=Transparent}"
-                                                   RadiusX="2"
-                                                   RadiusY="2" />
-                                        <TextBlock Text="{Binding}" />
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </dxe:ComboBoxEditSettings.ItemTemplate>
-                        <dxe:ComboBoxEditSettings.EditNonEditableTemplate>
-                            <ControlTemplate>
-                                <Rectangle Margin="2"
-                                           Fill="{Binding EditValue, RelativeSource={RelativeSource TemplatedParent}}"
-                                           RadiusX="2"
-                                           RadiusY="2" />
-                            </ControlTemplate>
-                        </dxe:ComboBoxEditSettings.EditNonEditableTemplate>
-                        <dxe:ComboBoxEditSettings.Items>
-                            <sys:String>Red</sys:String>
-                            <sys:String>Green</sys:String>
-                            <sys:String>Blue</sys:String>
-                        </dxe:ComboBoxEditSettings.Items>
-                    </dxe:ComboBoxEditSettings>
-                </dxg:GridColumn.EditSettings>
-            </dxg:GridColumn>
-        </dxg:GridControl.Columns>
-        <dxg:GridControl.View>
-            <dxg:TableView AutoWidth="True" />
-        </dxg:GridControl.View>
-    </dxg:GridControl>
-
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <dxg:GridControl ItemsSource="{Binding Data}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Name" Width="*"/>
+                <dxg:GridColumn FieldName="CardColor" Header="Access Card Color" Width="2*">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False">
+                            <dxe:ComboBoxEditSettings.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="10" Height="10" Margin="6,0,6,0" RadiusX="2" RadiusY="2"
+                                                   Fill="{Binding TargetNullValue=Transparent}"/>
+                                            <TextBlock Text="{Binding}" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </dxe:ComboBoxEditSettings.ItemTemplate>
+                            <dxe:ComboBoxEditSettings.EditNonEditableTemplate>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" RadiusX="2" RadiusY="2" 
+                                           Fill="{Binding (dxe:BaseEdit.OwnerEdit).EditValue, RelativeSource={RelativeSource Mode=Self}}"/>
+                                </ControlTemplate>
+                            </dxe:ComboBoxEditSettings.EditNonEditableTemplate>
+                            <dxe:ComboBoxEditSettings.Items>
+                                <sys:String>Red</sys:String>
+                                <sys:String>Green</sys:String>
+                                <sys:String>Blue</sys:String>
+                            </dxe:ComboBoxEditSettings.Items>
+                        </dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
 </Window>
