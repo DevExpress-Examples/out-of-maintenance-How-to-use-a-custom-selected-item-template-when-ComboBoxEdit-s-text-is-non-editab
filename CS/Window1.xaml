@@ -31,8 +31,7 @@
                             </dxe:ComboBoxEditSettings.ItemTemplate>
                             <dxe:ComboBoxEditSettings.EditNonEditableTemplate>
                                 <ControlTemplate>
-                                    <Rectangle Margin="2" RadiusX="2" RadiusY="2" 
-                                           Fill="{Binding (dxe:BaseEdit.OwnerEdit).EditValue, RelativeSource={RelativeSource Mode=Self}}"/>
+                                    <Rectangle Margin="2" RadiusX="2" RadiusY="2" Fill="{Binding Path=(dxe:BaseEdit.OwnerEdit).EditValue}"/>
                                 </ControlTemplate>
                             </dxe:ComboBoxEditSettings.EditNonEditableTemplate>
                             <dxe:ComboBoxEditSettings.Items>
