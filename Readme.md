@@ -4,7 +4,7 @@
 * [Window1.xaml](./CS/Window1.xaml) (VB: [Window1.xaml](./VB/Window1.xaml))
 * [Window1.xaml.cs](./CS/Window1.xaml.cs) (VB: [Window1.xaml.vb](./VB/Window1.xaml.vb))
 <!-- default file list end -->
-# How to customize the appearance of the in-place combo box editor
+# How to use a custom selected item template when ComboBoxEdit's text is non-editable
 
 
 <p>The following example shows how to customize the in-place combo box editor's appearance when its text field is not editable.</p>
